@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHYNOT</title>
+    <link rel="icon" href="./img/blockchain.png">
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/animate.css">
+
+    <style>
+    body {
+        margin: 0;
+         padding: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .intro {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100%;
+        overflow: hidden;
+    }
+    .intro_media {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: black;
+        background: url("./img/backP.jpg") no-repeat center center;
+        background-size: cover;
+        z-index: 1;
+    }
+    .intro_video_gg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 2;
+    }
+    .intro_content {
+        position: absolute;
+        z-index: 3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+    .backP {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 60%;
+        z-index: 2;
+    }
+
+    * {
+        cursor: none;
+    }
+
+    .cursor {
+        width: 40px; 
+        height: 40px; 
+        background: url('./img/cursor-white.png') no-repeat center center;
+        background-size: contain; 
+        position: absolute;
+        transform: translate(-50%, -50%);
+        pointer-events: none; 
+        z-index: 1000; 
+    }
+
+    .modal-content, .modal-content1, .modal-content2 {
+        cursor: url('./img/cursor-black.png'), auto; 
+    }
+
+    .content {
+        position: relative;
+        z-index: 4;
+        color: white;
+    }
+
+    .contentDown {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 4;
+        padding: 0px;
+    }
+
+    .github, .info, .contact {
+        width: 55px;
+        height: 55px;
+        border: none;
+        background-size: cover;
+        margin-top: -80px;
+        margin-left: 40px;
+        margin-right: 40px;
+        background-color: transparent;
+    }
+
+    .clickhere {
+        border-radius: 8px;
+        color: black;
+        border-color: black;
+        transition: .2s linear;
+        background: white;
+        margin: 10px;
+        height: 30px;
+        font-family:'Courier New', Courier, monospace;
+    }
+
+    .clickhere:hover {
+        box-shadow: 0 0 0 2px white, 0 0 0 4px black;
+    }
+
+    .clickhere1:hover {
+        box-shadow: 0 0 0 2px white, 0 0 0 4px black;
+    }
+
+    .github {
+        background-image: url('./img/github.png');
+    }
+    .info {
+        background-image: url('./img/info.png');
+    }
+    .contact {
+        background-image: url('./img/contact.png');
+    }
+    .github:hover, .info:hover, .contact:hover {
+        opacity: 0.8;
+    }
+    .github:active, .info:active, .contact:active {
+        transform: scale(0.95);
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 10;
+    }
+
+    .modal1 {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 10;
+    }
+
+    .modal2 {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 10;
+    }
+
+    .modal-content {
+        background-color: rgb(255, 255, 255);
+        margin: 7% auto;
+        padding: 1%;
+        width: 400px;
+        height: 515px;
+        border-radius: 25px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Центрируем по горизонтали */
+        justify-content: top; /* Центрируем по вертикали */
+        text-align: center; /* Центрируем текст */
+        position: relative; /* Устанавливаем относительное позиционирование для родительского контейнера */
+    }
+
+    .aboutme-logo, .line-photo {
+        margin-bottom: 10px; /* Отступ между изображениями */
+    }
+
+    .modal-content1 {
+        background-color: rgb(255, 255, 255);
+        margin: 7% auto;
+        padding: 1%;
+        width: 350px;
+        height: 450px;
+        border-radius: 25px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Центрируем по горизонтали */
+        justify-content: top; /* Центрируем по вертикали */
+        text-align: center; /* Центрируем текст */
+        position: relative; /* Устанавливаем относительное позиционирование для родительского контейнера */
+    }
+
+    .modal-content2 {
+        background-color: rgb(255, 255, 255);
+        margin: 7% auto;
+        padding: 1%;
+        width: 350px;
+        height: 450px;
+        border-radius: 25px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Центрируем по горизонтали */
+        justify-content: top; /* Центрируем по вертикали */
+        text-align: center; /* Центрируем текст */
+        position: relative; /* Устанавливаем относительное позиционирование для родительского контейнера */
+    }
+
+    .close, .close1, .close2 {
+        color: hsl(0, 0%, 0%);
+        font-size: 28px;
+        font-weight: bold;
+        position: absolute; /* Абсолютное позиционирование */
+        top: 10px;
+        right: 25px;
+        cursor: pointer; /* Курсор указывает на интерактивность */
+        z-index: 1001; /* Устанавливаем больший z-index для видимости */
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+    }
+
+    .close1:hover,
+    .close1:focus {
+        color: black;
+    }
+
+    .close2:hover,
+    .close2:focus {
+        color: black;
+    }
+
+    .name {
+        font-size: 20px;
+    }
+
+    .it-text {
+        font-size: 15px;
+    }
+
+    .experience {
+        text-align: left; /* Выравнивание текста списка */
+        margin-left: 20px;
+        padding-left: 0;
+    }
+    .comment {
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 10px;
+    }
+
+    .githubBlack{
+        width: 80px;
+        height: 80px;
+    }
+
+    .text-git {
+        font-size: 30px;
+    }
+
+    .chatgg {
+        width: 77px;
+        height: 77px;
+        margin-bottom: 10px;
+    }
+
+    .contactwithme {
+        font-size: 25px;
+    }
+
+    .telegram, .discord, .gmail {
+        width: 55px;
+        height: 55px;
+        border: none;
+        background-size: cover;
+        margin-top: 25px;
+        margin-left: 20px;
+        margin-right: 20px;
+        background-color: transparent;
+    }
+
+    .telegram {
+        background-image: url('./img/telegram.png');
+    }
+
+    .discord {
+        background-image: url('./img/discord.png');
+    }
+
+    .gmail {
+        background-image: url('./img/gmail.png');
+    }
+
+    .tdg {
+        display: flex;
+    }
+
+    .whynot {
+        font-family:'Courier New', Courier, monospace;
+        font-size: 120px;
+        animation: colorChange 10s infinite; /* Применяем анимацию */
+        border: 2cap;
+        border-color: black;
+    }
+
+    @keyframes colorChange {
+        0% { color: rgb(255, 255, 255); } /* Начальный цвет */
+        25% { color: rgb(182, 182, 182); } /* Цвет на 25% времени */
+        50% { color: rgb(79, 79, 79); } /* Цвет на 50% времени */
+        75% { color: rgb(182, 182, 182); } /* Цвет на 75% времени */
+        100% { color: rgb(255, 255, 255); } /* Конечный цвет */
+    }
+
+    @media (hover: none) {
+    .cursor {
+        display: none;
+    }
+}
+
+    @media (max-width: 768px) {
+    .whynot {
+        font-size: 60px; /* Уменьшите размер текста на мобильных */
+    }
+
+    .github, .info, .contact {
+        width: 40px;
+        height: 40px;
+        border: none;
+        background-size: cover;
+        margin-top: -40px;
+        margin-left: 40px;
+        margin-right: 40px;
+        background-color: transparent;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="intro">
+            <div class="intro_media">
+                <video class="intro_video_gg" src="./video/background_video.mp4" autoplay loop muted playsinline></video>
+            </div>
+            <div class="intro_content">
+                <img class="backP" src="./img/backP.jpg" alt="">
+                <div class="cursor" id="cursor"></div>
+                <div class="content">
+                    <p class="whynot">WHYNOT</p>
+                </div>
+                    <div class="contentDown">
+                        <button class="github" id="githubModal"></button>
+                        <button class="info" id="openModal"></button>
+                        <button class="contact" id="ctnModal"></button>
+
+                            <div id="myGitHubModal" class="modal1">
+                                <div class="modal-content1">
+                                    <span class="close1">&times;</span>
+                                    <br>
+                                    <img class="githubBlack" src="./img/github.black.png" sizes="20px" alt="">
+                                    <p class="text-git">My GitHub projects</p>
+                                    <p class="">You can see my new projects and experience in my GitHub account. Every day i spend 2-3 hours for learning HTML, CSS, JavaScript. Every time im will adding new projects im GitHub.</p>
+                                    <br>
+                                    <form action="https://github.com/x-whynot" target="_blank">
+                                        <button class="clickhere" type="submit">See my projects</button>
+                                    </form>         
+                                </div>
+                            </div>
+
+                            <div id="myModal" class="modal">
+                                <div class="modal-content">
+                                    <span class="close">&times;</span>
+                                    <br>
+                                    <div>
+                                        <img class="aboutme-logo" src="./img/about.me.logo.png" alt="">
+                                        <br>
+                                        <img class="line-photo" src="./img/line.png" alt="">
+                                        <p class="name">Mykyta Yemelianov</p>
+                                        <p class="it-text">Programming languages/experience:</p>
+                                        <br>
+                                        <dl class="experience">
+                                            <dt>- HTML</dt>
+                                            <dt>- CSS</dt>
+                                            <dt>- JavaScript</dt>
+                                            <dt>- SQL</dt>
+                                            <dt>- Virtual Box</dt>
+                                        </dl> 
+                                        <br>
+                                        <p class="comment"> “Through my studies and self-learning,
+                                            I have effectively utilized these tools
+                                            to create  and test various software
+                                            solutions.”</p>
+                                    </div>
+                                </div> 
+                            </div>
+
+                            <div id="contactModal" class="modal2">
+                                <div class="modal-content2">
+                                    <span class="close2">&times;</span>
+                                    <br>
+                                    <img class="chatgg" src="./img/chat.png" alt="">
+                                    <img src="./img/line.png" alt="">
+                                    <p class="contactwithme">Contact with me</p>
+                                    <p>For suggestions and ideas, you can contact me via social networks or email. The contact options are listed below.</p>
+                                    <p>Click on buttons</p>
+                                    <div class="tdg">
+                                        <form action="https://t.me/whynot0_0" target="_blank">
+                                            <button class="telegram" type="submit"></button>
+                                        </form>
+                                        <form action="https://discordapp.com/users/1158733810461052968" target="_blank">
+                                            <button class="discord" type="submit"></button>
+                                        </form>
+                                        <form action="mailto:mykytayemelianov@gmail.com" target="_blank">
+                                            <button class="gmail" type="submit"></button>
+                                        </form>
+                                    </div>
+            
+                                </div>
+                            </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/cursor.js"></script>
+    <script src="./js/modal.window.js"></script>
+    <script src="./js/modal.window.github.js"></script>
+    <script src="./js/modal.window.contact.js"></script>
+</body>
+</html>
